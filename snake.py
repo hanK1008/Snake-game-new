@@ -35,6 +35,20 @@ class Snake:
 
         self.head.forward(MOVE_DISTANCE)
 
+    def extend(self):
+        # use turtle.position method
+        # add a new block to snake
+        t = Turtle(shape="square")
+        t.color("white")
+        t.penup()
+        self.snake_blocks.append(t)
+
+    def position(self):
+        x_cord = self.snake_blocks[-1].xcor()
+        y_cord = self.snake_blocks[-1].ycor()
+
+
+
     def up(self):
         if self.head.heading() != 270:
             # this will control if snake going one direction
