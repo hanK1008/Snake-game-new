@@ -25,7 +25,7 @@ screen.onkey(snake.left, "Left")        # Command for left arrow key
 
 while game_on:                          # Starting loop to make continue moving of snake
     screen.update()                     # Will update screen after every snake move one bit
-    sleep(0.08)                         # Set speed of snake lower the number higher the speed
+    sleep(0.1)                         # Set speed of snake lower the number higher the speed
     snake.move()                        # Move the snake one bit
     # Detect collision with food
     if snake.head.distance(food) < 17:  # Take distance between snake head and food.....and if conditions met

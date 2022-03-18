@@ -1,13 +1,14 @@
 from turtle import Turtle
 
 MOVE_DISTANCE = 20
+SNAKE_BLOCK_SHAPE = "circle"
 
 
 class Snake:
     def __init__(self):
         self.snake_blocks = []
         for _ in range(3):
-            t = Turtle(shape="square")
+            t = Turtle(shape=SNAKE_BLOCK_SHAPE)
             t.color("white")
             t.penup()
             self.snake_blocks.append(t)
@@ -39,7 +40,7 @@ class Snake:
     def extend(self):
         # use turtle.position method
         # add a new block to snake
-        t = Turtle(shape="square")
+        t = Turtle(shape=SNAKE_BLOCK_SHAPE)
         t.color("white")
         t.penup()
         t.goto(self.position())
