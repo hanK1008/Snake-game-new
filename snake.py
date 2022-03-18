@@ -11,6 +11,7 @@ class Snake:
             t.color("white")
             t.penup()
             self.snake_blocks.append(t)
+            t.speed("fastest")
 
         self.snake_blocks[1].goto(x=-20, y=0)
         self.snake_blocks[2].goto(x=-40, y=0)
@@ -41,13 +42,13 @@ class Snake:
         t = Turtle(shape="square")
         t.color("white")
         t.penup()
+        t.goto(self.position())
         self.snake_blocks.append(t)
 
     def position(self):
         x_cord = self.snake_blocks[-1].xcor()
         y_cord = self.snake_blocks[-1].ycor()
-
-
+        return x_cord, y_cord
 
     def up(self):
         if self.head.heading() != 270:
@@ -66,4 +67,3 @@ class Snake:
     def right(self):
         if self.head.heading() != 180:
             self.head.setheading(0)
-

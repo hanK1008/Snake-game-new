@@ -27,4 +27,3 @@ class Score(Turtle):
         self.clear()
         self.current_score += 1
         self.score_string()
-
