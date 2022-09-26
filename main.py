@@ -23,6 +23,8 @@ screen.onkey(snake.down, "Down")        # Command for Down arrow key
 screen.onkey(snake.right, "Right")      # Command for Right arrow key
 screen.onkey(snake.left, "Left")        # Command for left arrow key
 
+snake.create_snake()
+sleep_time = 1
 while game_on:                          # Starting loop to make continue moving of snake
     screen.update()                     # Will update screen after every snake move one bit
     sleep(0.1)                         # Set speed of snake lower the number higher the speed
@@ -36,16 +38,24 @@ while game_on:                          # Starting loop to make continue moving 
     # Detect collision with wall
     # Will measure the position of head of the snake from all corners of the screen
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        game_on = False                 # Will make game over by flipping switch
-        score.game_over()               # Will show the message GAME OVER on the screen
+        # game_on = False                 # Will make game over by flipping switch
+        score.game_over()  # Will show the message GAME OVER on the screen
+        sleep(sleep_time)
+        snake.reset_snake()
+        score.reset_score()
+        snake.create_snake()
 
     # Detect collision with itself (tail)
     for snake_piece in snake.snake_blocks[1:]:
         # Started from second piece of snake
         # as first position is same as snake.head
         if snake.head.distance(snake_piece) < 10:
-            game_on = False
-            score.game_over()
+            snake.reset_snake()
+            score.game_over()  # Will show the message GAME OVER on the screen
+            sleep(sleep_time)
+            # game_on = False
+            score.reset_score()
+            snake.create_snake()
 
 
 screen.exitonclick()

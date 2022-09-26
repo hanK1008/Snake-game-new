@@ -7,17 +7,22 @@ SNAKE_BLOCK_SHAPE = "circle"
 class Snake:
     def __init__(self):
         self.snake_blocks = []
+        self.head = Turtle()
+
+    def create_snake(self):
+        self.snake_block = []
         for _ in range(3):
             t = Turtle(shape=SNAKE_BLOCK_SHAPE)
             t.color("white")
             t.penup()
-            self.snake_blocks.append(t)
+            self.snake_block.append(t)
             t.speed("fastest")
 
-        self.snake_blocks[1].goto(x=-20, y=0)
-        self.snake_blocks[2].goto(x=-40, y=0)
+        self.snake_block[1].goto(x=-20, y=0)
+        self.snake_block[2].goto(x=-40, y=0)
 
-        self.head = self.snake_blocks[0]
+        self.head = self.snake_block[0]
+        self.snake_blocks= self.snake_block
 
     #  Logic: for moving snake and update it perfectly so no inconsistency between program
     # we used: last piece of snake move to second last piece
@@ -46,6 +51,9 @@ class Snake:
         t.goto(self.position())
         self.snake_blocks.append(t)
 
+    def reset_snake(self):
+        for blocks in self.snake_blocks:
+            blocks.goto(1000, 1000)
     def position(self):
         x_cord = self.snake_blocks[-1].xcor()
         y_cord = self.snake_blocks[-1].ycor()
